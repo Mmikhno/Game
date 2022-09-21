@@ -1,23 +1,21 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Game {
-    protected List<Player> players = new ArrayList<>();
+    Map<String, Player> players = new HashMap<>();
 
     public void registered(Player player) {
-        players.add(player);
+        players.put(player.getName(), player);
     }
 
-    public int round(String playerName1, String playerName2) {
+    public int round2(String playerName1, String playerName2) {
         Player player1 = null;
         Player player2 = null;
-
-        for (int i = 0; i < players.size(); i++) {
-            if (players.get(i).getName().equals(playerName1)) {
-                player1 = players.get(i);
+        for (String key : players.keySet()) {
+            if (key.equals(playerName1)) {
+                player1 = players.get(key);
             }
-            if (players.get(i).getName().equals(playerName2)) {
-                player2 = players.get(i);
+            if (key.equals(playerName2)) {
+                player2 = players.get(key);
             }
         }
         if (player1 == null) {
